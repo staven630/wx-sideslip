@@ -1,0 +1,20 @@
+{
+  "name": "wx-sideslip",
+  "version": "0.0.1",
+  "description": "> 类似 QQ 通讯录侧滑",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staven630/wx-sideslip.git"
+  },
+  "keywords": [],
+  "author": "staven <20287710@qq.com> (http://github.com/staven630)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/staven630/wx-sideslip/issues"
+  },
+  "homepage": "https://github.com/staven630/wx-sideslip#readme"
+}
