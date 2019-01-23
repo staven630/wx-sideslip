@@ -1,0 +1,6 @@
+._sideslip {overflow: hidden; }
+._sideslip--movable {
+    display: flex;
+    direction: row;
+    overflow: hidden;
+}
