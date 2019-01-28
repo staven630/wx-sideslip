@@ -1,6 +1,6 @@
 {
   "name": "wx-sideslip",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "> 类似 QQ 通讯录侧滑",
   "main": "index.js",
   "scripts": {

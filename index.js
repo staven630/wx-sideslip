@@ -79,8 +79,6 @@ Component({
       const { distance } = this.properties
       let x = this.data.x
       const _distance = _endX - _startX
-      console.log(_distance)
-      console.log(distance)
       if (_distance < 0) {
         if (-_distance < distance) return
         x = -_distance < _threshold ? 0 : -this._slideWidth
