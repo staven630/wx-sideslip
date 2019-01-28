@@ -49,14 +49,14 @@ Component({
         .select('.slideslip-right')
         .boundingClientRect(res => {
           this._slideWidth = res.width
-          this._threshold = this._slideWidth / 2
+          this._threshold = this._slideWidth / 3
           params.slideWidth = this._slideWidth * this._pixelRatio
           this.setParams(params)
         })
         .exec()
     } else {
       this._slideWidth = this.properties.slideWidth / this._pixelRatio
-      this._threshold = this._slideWidth / 2
+      this._threshold = this._slideWidth / 3
       this.setParams(params)
     }
   },
@@ -79,6 +79,8 @@ Component({
       const { distance } = this.properties
       let x = this.data.x
       const _distance = _endX - _startX
+      console.log(_distance)
+      console.log(distance)
       if (_distance < 0) {
         if (-_distance < distance) return
         x = -_distance < _threshold ? 0 : -this._slideWidth
