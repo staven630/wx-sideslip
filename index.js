@@ -6,7 +6,7 @@ Component({
     //  组件显示区域的宽度 (rpx)
     width: {
       type: Number,
-      value: 0 // 750rpx 即整屏宽
+      value: 750 // 750rpx 即整屏宽
     },
     //  组件显示区域的高度 (rpx),必填项
     height: {
@@ -23,10 +23,14 @@ Component({
       type: Boolean,
       value: true
     },
-    // 初始状态是否侧滑
+    // 初始是否侧滑
     show: {
       type: Boolean,
       value: false
+    },
+    distance: {
+      type: Number,
+      value: 10
     }
   },
 
@@ -37,12 +41,8 @@ Component({
   ready() {
     const info = wx.getSystemInfoSync()
     this._pixelRatio = info.pixelRatio
-    const { width, slideWidth } = this.properties
+    const { slideWidth } = this.properties
     let params = {}
-    if (!width) {
-      params.width = info.windowWidth * this._pixelRatio
-    }
-
     if (!slideWidth) {
       const query = wx.createSelectorQuery().in(this)
       query
@@ -76,12 +76,15 @@ Component({
     onTouchEnd(e) {
       this._endX = e.changedTouches[0].pageX
       const { _endX, _startX, _threshold } = this
-      let x = null
-      const distance = _endX - _startX
-      if (distance < 0) {
-        x = -distance < _threshold ? 0 : -this._slideWidth
+      const { distance } = this.properties
+      let x = this.data.x
+      const _distance = _endX - _startX
+      if (_distance < 0) {
+        if (-_distance < distance) return
+        x = -_distance < _threshold ? 0 : -this._slideWidth
       } else {
-        x = distance > _threshold ? 0 : -this._slideWidth
+        if (_distance < distance) return
+        x = _distance > _threshold ? 0 : -this._slideWidth
       }
 
       this.setData({

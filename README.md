@@ -90,6 +90,7 @@ wxss
 | slideWidth | Number  | 否       | slot='right'插槽宽度 | 滑动显示区域的宽度(rpx) |
 | out        | Boolean | 否       | true                 | 是否允许惯性越界        |
 | show       | Boolean | 否       | false                | 初始状态是否侧滑        |
+| distance   | Number  | 否       | 10                   | 滑动生效间距值          |
 
 # 其他小程序插件
 
