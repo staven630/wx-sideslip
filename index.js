@@ -30,7 +30,7 @@ Component({
     },
     distance: {
       type: Number,
-      value: 10
+      value: null
     }
   },
 
@@ -76,17 +76,16 @@ Component({
     onTouchEnd(e) {
       this._endX = e.changedTouches[0].pageX
       const { _endX, _startX, _threshold } = this
-      const { distance } = this.properties
+      let { distance } = this.properties
+      distance = distance === null ? this._threshold / 2 : distance
       let x = this.data.x
       const _distance = _endX - _startX
-      if (_distance < 0) {
-        if (-_distance < distance) return
+      if (_distance < 0 && -_distance > distance) {
         x = -_distance < _threshold ? 0 : -this._slideWidth
-      } else {
-        if (_distance < distance) return
+      }
+      if (_distance > 0 && _distance > distance) {
         x = _distance > _threshold ? 0 : -this._slideWidth
       }
-
       this.setData({
         x
       })
